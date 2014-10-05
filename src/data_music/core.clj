@@ -6,7 +6,10 @@
 (require '[clojure.data.csv :as csv]
          '[clojure.java.io :as io]
          '[overtone.core]
-         '[overtone.inst synth])
+         '[overtone.inst synth]
+         '[data-music.instruments])
+
+(refer 'data-music.instruments)
 
 
 (defn foo
@@ -14,11 +17,12 @@
   [x]
   (println x "Hello, World!"))
 
-(definst sin-wave [freq 440 attack 0.01 sustain 0.4 release 0.1 vol 0.4] 
-    (* (env-gen (lin attack sustain release) 1 1 0 1 FREE)
-       (sin-osc freq)
-       vol))
+;; (definst sin-wave [freq 440 attack 0.01 sustain 0.4 release 0.1 vol 0.4] 
+;;     (* (env-gen (lin attack sustain release) 1 1 0 1 FREE)
+;;        (sin-osc freq)
+;;        vol))
 
 (defn -main
   [& args]
-  (sin-wave))
+  (sin-wave)
+  (noisey))
